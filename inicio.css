@@ -1,0 +1,118 @@
+nav {
+    background-color: #001f3f;
+    padding: 10px 20px;
+    position: relative;
+    /* necesario para el logo absoluto */
+}
+
+/* Logo pegado a la izquierda */
+.logo {
+    position: absolute;
+    top: 50%;
+    /* centra verticalmente */
+    left: 10px;
+    /* pegado al borde izquierdo con un pequeño margen */
+    transform: translateY(-50%);
+}
+
+.boton {
+    right: 15px;
+    position: absolute;
+    top: 10px;
+}
+
+.boton .boton_iniciar_sesion {
+    background-color: #E6CC4C;
+    color: black;
+}
+
+.boton .boton_registro {
+    background-color: #ededed;
+    margin-left: 10px;
+    color: black;
+}
+
+.logo img {
+    height: 80px;
+    width: auto;
+}
+
+/* Botones centrados */
+.menu {
+    display: flex;
+    justify-content: center;
+    /* centra los botones horizontalmente */
+    align-items: center;
+    gap: 15px;
+}
+
+
+.menu-items {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+}
+
+/* Botones y enlaces */
+.menu button,
+.menu a {
+    background-color: #001f3f;
+    color: white;
+    padding: 8px 16px;
+    border: none;
+    border-radius: 5px;
+    text-decoration: none;
+    font-size: 14px;
+    cursor: pointer;
+}
+
+.menu a {
+    display: inline-block;
+}
+
+/* Hover */
+.menu button:hover,
+.menu a:hover {
+    background-color: #2980b9;
+}
+
+/* Dropdown */
+.desplegable {
+    position: relative;
+}
+
+.menu-content {
+    display: none;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    background-color: #f1f1f1;
+    border-radius: 5px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    z-index: 1;
+}
+
+.desplegable:hover .menu-content {
+    display: block;
+}
+
+.menu-content a {
+    display: block;
+    padding: 10px;
+    color: white;
+    text-decoration: none;
+}
+
+.menu-content a:hover {
+    background-color: #ddd;
+}
+
+
+.video_presentación {
+    width: 100%;
+    height: auto;
+    max-height: 500px;
+    /* Limita la altura máxima del video */
+    object-fit: cover;
+    /* Asegura que el video cubra el área sin distorsionarse */
+}

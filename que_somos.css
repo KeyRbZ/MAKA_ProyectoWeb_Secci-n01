@@ -1,0 +1,121 @@
+:root {
+    --primary: #001f3f;
+    --secondary: #2980b9;
+    --accent: #E6CC4C;
+    --white: #ffffff;
+    --gray: #6c757d;
+    --shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    --transition: all 0.3s ease;
+}
+
+
+body {
+    font-family: Arial, sans-serif;
+    line-height: 1.6;
+    color: #333;
+    background-color: #f8f9fa;
+}
+
+nav {
+    background-color: var(--primary);
+    padding: 10px 20px;
+    position: relative;
+}
+
+.logo {
+    position: absolute;
+    top: 50%;
+    left: 10px;
+    transform: translateY(-50%);
+}
+
+
+.boton {
+    right: 15px;
+    position: absolute;
+    top: 10px;
+}
+
+.boton .boton_iniciar_sesion {
+    background-color: var(--accent);
+    color: black;
+    border: none;
+    padding: 8px 16px;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.boton .boton_registro {
+    background-color: #ededed;
+    margin-left: 10px;
+    color: black;
+    border: none;
+    padding: 8px 16px;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.logo img {
+    height: 80px;
+    width: auto;
+}
+
+.menu {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 15px;
+}
+
+.menu button,
+.menu a {
+    background-color: var(--primary);
+    color: white;
+    padding: 8px 16px;
+    border: none;
+    border-radius: 5px;
+    text-decoration: none;
+    font-size: 14px;
+    cursor: pointer;
+    transition: var(--transition);
+}
+
+.menu a {
+    display: inline-block;
+}
+
+.menu button:hover,
+.menu a:hover {
+    background-color: var(--secondary);
+}
+
+.desplegable {
+    position: relative;
+}
+
+.menu-content {
+    display: none;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    background-color: #f1f1f1;
+    border-radius: 5px;
+    box-shadow: var(--shadow);
+    z-index: 1;
+    min-width: 160px;
+}
+
+.desplegable:hover .menu-content {
+    display: block;
+}
+
+.menu-content a {
+    display: block;
+    padding: 10px;
+    color: #333;
+    text-decoration: none;
+}
+
+.menu-content a:hover {
+    background-color: #ddd;
+}

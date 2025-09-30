@@ -119,3 +119,116 @@ nav {
 .menu-content a:hover {
     background-color: #ddd;
 }
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+    display: flex;
+    gap: 20px;
+    justify-content: space-between;
+}
+
+.contenido_texto {
+    max-width: 900px;
+    margin: 40px auto;
+    padding: 0 20px;
+    text-align: center;
+    font-family: Arial, sans-serif;
+    line-height: 1.6;
+    color: var(--primary);
+}
+
+.contenido_texto h2 {
+    margin-bottom: 20px;
+    font-size: 2.5rem;
+    font-family: 'Times New Roman';
+}
+
+.contenido_texto p {
+    font-size: 1.2rem;
+    font-family: 'Roboto';
+}
+
+section {
+    padding: 40px 20px;
+    background-color: var(--white);
+    border-radius: 12px;
+    box-shadow: var(--shadow);
+    transition: var(--transition);
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    min-height: 100px;
+}
+
+section:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+}
+
+.section-content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
+    height: 100%;
+}
+
+.section-text {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+section h2 {
+    color: var(--primary);
+    margin-bottom: 20px;
+    font-size: 1.5rem;
+    position: relative;
+    padding-bottom: 10px;
+}
+
+section h2::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 60px;
+    height: 4px;
+    background-color: var(--accent);
+    border-radius: 2px;
+}
+
+section p {
+    font-size: 1rem;
+    color: var(--gray);
+    line-height: 1.6;
+}
+
+section ul {
+    font-size: 1rem;
+    color: var(--gray);
+    line-height: 1.6;
+    text-align: left;
+}
+
+.linea-degradado {
+    border: 0;
+    height: 4px;
+    background: linear-gradient(90deg, transparent, #001f3f, transparent);
+    margin: 30px 0;
+    border-radius: 2px;
+}
+
+.logo-2 img{
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  align-items: center;
+}
+

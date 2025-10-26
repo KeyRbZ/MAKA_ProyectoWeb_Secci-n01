@@ -3,7 +3,7 @@ include 'conexion.php';
 
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
-    // Recoger datos del formulario
+
     $nombre = $_POST['nombre'];
     $apellido = $_POST['apellido'];
     $email = $_POST['email'];

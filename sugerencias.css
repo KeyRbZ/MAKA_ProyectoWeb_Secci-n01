@@ -1,0 +1,228 @@
+:root {
+    --primary: #001f3f;
+    --secondary: #2980b9;
+    --accent: #E6CC4C;
+    --white: #ffffff;
+    --gray: #6c757d;
+    --shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    --transition: all 0.3s ease;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    line-height: 1.6;
+    color: #333;
+    background-color: #f8f9fa;
+}
+
+nav {
+    background-color: var(--primary);
+    padding: 10px 20px;
+    position: relative;
+}
+
+.logo {
+    position: absolute;
+    top: 50%;
+    left: 10px;
+    transform: translateY(-50%);
+}
+
+.boton {
+    right: 15px;
+    position: absolute;
+    top: 10px;
+}
+
+.boton .boton_iniciar_sesion {
+    background-color: var(--accent);
+    color: black;
+    border: none;
+    padding: 8px 16px;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.boton .boton_registro {
+    background-color: #ededed;
+    margin-left: 10px;
+    color: black;
+    border: none;
+    padding: 8px 16px;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.logo img {
+    height: 80px;
+    width: auto;
+}
+
+.menu {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 15px;
+}
+
+.menu button,
+.menu a {
+    background-color: var(--primary);
+    color: white;
+    padding: 8px 16px;
+    border: none;
+    border-radius: 5px;
+    text-decoration: none;
+    font-size: 14px;
+    cursor: pointer;
+    transition: var(--transition);
+}
+
+.menu a {
+    display: inline-block;
+}
+
+.menu button:hover,
+.menu a:hover {
+    background-color: var(--secondary);
+}
+
+.desplegable {
+    position: relative;
+}
+
+.menu-content {
+    display: none;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    background-color: #f1f1f1;
+    border-radius: 5px;
+    box-shadow: var(--shadow);
+    z-index: 1;
+    min-width: 160px;
+}
+
+.desplegable:hover .menu-content {
+    display: block;
+}
+
+.menu-content a {
+    display: block;
+    padding: 10px;
+    color: #333;
+    text-decoration: none;
+}
+
+.menu-content a:hover {
+    background-color: #ddd;
+}
+
+.page-wrap{
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 32px 16px 56px;    
+}
+
+.sugerencias-form{
+  max-width: 520px;         
+  margin: 0 auto;             
+  background: var(--white);
+  padding: 28px;
+  border-radius: 8px;
+  box-shadow: var(--shadow);
+  border: 1px solid #e5e7eb;
+}
+
+.sugerencias-form::before{
+  content: "Sugerencias";
+  display: block;
+  color: var(--primary);
+  font-size: 1.25rem;
+  font-weight: 800;
+  margin-bottom: 18px;
+}
+
+.alert{
+  padding: 10px 12px;
+  border-radius: 6px;
+  font-size: 0.92rem;
+  margin-bottom: 14px;
+}
+.alert.success{ background:#ecfdf5; color:#065f46; border:1px solid #a7f3d0; }
+.alert.error  { background:#fef2f2; color:#991b1b; border:1px solid #fecaca; }
+
+.form-row{
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 12px;
+  margin-bottom: 14px;
+}
+
+.form-section{ margin-top: 10px; }
+.form-section h3{
+  font-size: .95rem;
+  color: var(--primary);
+  font-weight: 800;
+  margin-bottom: 8px;
+}
+.form-group{ display:flex; flex-direction:column; gap:6px; }
+label{
+  font-size: .78rem;
+  font-weight: 700;
+  color: #475569;
+}
+
+input[type="text"],
+input[type="email"],
+textarea{
+  width: 100%;
+  background: #fff;
+  border: 1px solid #d1d5db;
+  border-radius: 6px;
+  padding: 10px 12px;
+  font-size: .95rem;
+  color: #111827;
+  outline: none;
+  transition: border-color .15s ease, box-shadow .15s ease;
+}
+textarea{ resize: vertical; min-height: 120px; }
+input::placeholder, textarea::placeholder{ color:#9ca3af; }
+input:focus, textarea:focus{
+  border-color: #2563eb;
+  box-shadow: 0 0 0 3px rgba(37,99,235,.18);
+}
+
+.btn-primario{
+  width: 100%;
+  margin-top: 10px;
+  background: var(--primary);
+  color: var(--white);
+  border: 0;
+  padding: 10px 14px;
+  border-radius: 6px;
+  font-weight: 700;
+  cursor: pointer;
+  transition: transform .04s ease, filter .15s ease;
+}
+.btn-primario:hover{ filter: brightness(1.05); }
+.btn-primario:active{ transform: translateY(1px); }
+
+.page-wrap{
+  padding-top: 72px;        
+}
+
+.sugerencias-form{
+  margin-top: 24px;            
+}
+
+@media (max-width: 768px){
+  .page-wrap{ padding-top: 48px; }
+  .sugerencias-form{ margin-top: 16px; }
+}

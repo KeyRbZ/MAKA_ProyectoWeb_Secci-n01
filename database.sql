@@ -1,5 +1,4 @@
-
-    CREATE DATABASE IF NOT EXISTS maka_proyectoweb;
+CREATE DATABASE IF NOT EXISTS maka_proyectoweb;
     USE maka_proyectoweb;
 
 
@@ -26,3 +25,4 @@
 
     SELECT fk_id AS 'ID', mes AS 'Mes', semana AS 'Semana'
     FROM maka_calculadora;
+

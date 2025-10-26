@@ -2,12 +2,12 @@
 include 'conexion.php';
 session_start();
 
-// Procesar el formulario de login
+
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $email = $_POST['email'];
     $password = $_POST['password'];
     
-    // Buscar usuario en la base de datos
+
     $sql = "SELECT * FROM usuarios WHERE email = ?";
     $stmt = $conexion->prepare($sql);
     $stmt->bind_param("s", $email);
@@ -17,15 +17,15 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     if ($result->num_rows > 0) {
         $usuario = $result->fetch_assoc();
         
-        // Verificar contraseña
+
         if (password_verify($password, $usuario['password'])) {
-            // Inicio de sesión exitoso
+
             $_SESSION['usuario_id'] = $usuario['id'];
             $_SESSION['usuario_nombre'] = $usuario['nombre'];
             $_SESSION['usuario_email'] = $usuario['email'];
             
             $success = "¡Inicio de sesión exitoso!";
-            // Redirigir a otra página después de login
+
             header("Refresh: 2; url=inicio.php");
         } else {
             $error = "Contraseña incorrecta";
@@ -43,7 +43,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>MAKA - Iniciar Sesión</title>
     <link rel="icon" type="icono" href="archivos/1.png">
-    <link rel="stylesheet" href="registro.css"> <!-- Puedes crear un CSS específico después -->
+    <link rel="stylesheet" href="registro.css"> 
     <script src="https://kit.fontawesome.com/c80d489b0f.js" crossorigin="anonymous"></script>
 </head>
 

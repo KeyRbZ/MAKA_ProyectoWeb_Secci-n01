@@ -1,19 +1,23 @@
 <?php
 include 'conexion.php';
 
+
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
-    // Recoger datos del formulario
+
     $nombre = $_POST['nombre'];
     $apellido = $_POST['apellido'];
     $email = $_POST['email'];
     $telefono = $_POST['telefono'];
     $password = $_POST['password'];
     
+
     if ($_POST['password'] !== $_POST['confirm_password']) {
         $error = "Las contraseñas no coinciden";
     } else {
+
         $password_hash = password_hash($password, PASSWORD_DEFAULT);
         
+
         $sql = "INSERT INTO usuarios (nombre, apellido, email, telefono, password) 
                 VALUES (?, ?, ?, ?, ?)";
         
@@ -129,7 +133,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
             <button type="submit" class="btn-create-account">Crear cuenta</button>
         </form>
-        <p>¿Ya tienes tu cuenta? <a href="iniciar_sesion.php">Inicia sesión</a></p>
+        <p>¿Ya tienes tu cuenta? Inicia sesión</p>
     </div>
 </body>
 

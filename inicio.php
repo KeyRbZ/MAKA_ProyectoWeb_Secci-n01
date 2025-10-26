@@ -20,16 +20,16 @@
             <div class="desplegable">
                 <button>MAKA</button>
                 <div class="menu-content">
-                    <a href="maka.html">Calculadora de gastos</a>
+                    <a href="maka.php">Calculadora de gastos</a>
                 </div>
             </div>
-            <a href="que_somos.html">¿Qué somos?</a>
-            <a href="contactanos.html">Contáctanos</a>
-            <a href="sugerencias.html">Sugerencias</a>
+            <a href="que_somos.php">¿Qué somos?</a>
+            <a href="contactanos.php">Contáctanos</a>
+            <a href="sugerencias.php">Sugerencias</a>
             <div class="boton">
-                <button class="boton_iniciar_sesion" onclick="window.location.href='iniciar_sesion.html'">Iniciar
+                <button class="boton_iniciar_sesion" onclick="window.location.href='iniciar_sesion.php'">Iniciar
                     sesión</button>
-                <button class="boton_registro" onclick="window.location.href='registro.html'">Registrate</button>
+                <button class="boton_registro" onclick="window.location.href='registro.php'">Registrate</button>
             </div>
         </div>
     </nav>

@@ -1,0 +1,140 @@
+<?php
+include 'conexion.php';
+
+
+if ($_SERVER["REQUEST_METHOD"] == "POST") {
+
+    $nombre = $_POST['nombre'];
+    $apellido = $_POST['apellido'];
+    $email = $_POST['email'];
+    $telefono = $_POST['telefono'];
+    $password = $_POST['password'];
+    
+
+    if ($_POST['password'] !== $_POST['confirm_password']) {
+        $error = "Las contraseñas no coinciden";
+    } else {
+
+        $password_hash = password_hash($password, PASSWORD_DEFAULT);
+        
+
+        $sql = "INSERT INTO usuarios (nombre, apellido, email, telefono, password) 
+                VALUES (?, ?, ?, ?, ?)";
+        
+        $stmt = $conexion->prepare($sql);
+        $stmt->bind_param("sssss", $nombre, $apellido, $email, $telefono, $password_hash);
+        
+        if ($stmt->execute()) {
+            $success = "¡Usuario registrado exitosamente!";
+            $_POST = array();
+        } else {
+            $error = "Error al registrar: " . $conexion->error;
+        }
+    }
+}
+?>
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MAKA - Registro</title>
+    <link rel="icon" type="icono" href="archivos/1.png">
+    <link rel="stylesheet" href="registro.css">
+    <script src="https://kit.fontawesome.com/c80d489b0f.js" crossorigin="anonymous"></script>
+</head>
+
+<body>
+    <nav>
+        <div class="menu">
+            <div class="logo">
+                <img src="archivos/1.png" alt="Logo MAKA">
+            </div>
+            <a href="inicio.php">Inicio</a>
+            <div class="desplegable">
+                <button>MAKA</button>
+                <div class="menu-content">
+                    <a href="maka.php">Calculadora de gastos</a>
+                </div>
+            </div>
+            <a href="que_somos.php">¿Qué somos?</a>
+            <a href="contactanos.php">Contáctanos</a>
+            <a href="sugerencias.php">Sugerencias</a>
+            <div class="boton">
+                <button class="boton_iniciar_sesion" onclick="window.location.href='iniciar_sesion.php'">Iniciar
+                    sesión</button>
+                <button class="boton_registro" onclick="window.location.href='registro.php'">Registrate</button>
+            </div>
+        </div>
+    </nav>
+    
+    <div class="form-container">
+        <h2>Crear una cuenta</h2>
+        <p>Agregar en los campos requeridos la información a registrar para obtener una cuenta en MAKA</p>
+
+        <form class="register-form" method="POST" action="">
+            <?php if (isset($success)): ?>
+                <div class="alert success"><?php echo $success; ?></div>
+            <?php endif; ?>
+            
+            <?php if (isset($error)): ?>
+                <div class="alert error"><?php echo $error; ?></div>
+            <?php endif; ?>
+
+            <div class="form-row">
+                <div class="form-group">
+                    <label for="nombre">Nombre*</label>
+                    <input type="text" id="nombre" name="nombre" placeholder="Ingrese su nombre" 
+                           value="<?php echo isset($_POST['nombre']) ? $_POST['nombre'] : ''; ?>" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="apellido">Apellido*</label>
+                    <input type="text" id="apellido" name="apellido" placeholder="Ingrese su apellido"
+                           value="<?php echo isset($_POST['apellido']) ? $_POST['apellido'] : ''; ?>" required>
+                </div>
+            </div>
+
+            <div class="form-section">
+                <h3>Email*</h3>
+                <div class="form-group">
+                    <input type="email" id="email" name="email" placeholder="Ingrese su correo electrónico"
+                           value="<?php echo isset($_POST['email']) ? $_POST['email'] : ''; ?>" required>
+                </div>
+            </div>
+
+            <div class="form-section">
+                <h3>Numero telefónico*</h3>
+                <div class="form-group">
+                    <input type="tel" id="telefono" name="telefono" placeholder="Ingrese su numero de teléfono"
+                           value="<?php echo isset($_POST['telefono']) ? $_POST['telefono'] : ''; ?>" required>
+                </div>
+            </div>
+
+            <div class="form-section">
+                <h3>Cree su contraseña*</h3>
+                <div class="form-group">
+                    <input type="password" id="password" name="password" placeholder="Cree una contraseña" required>
+                </div>
+            </div>
+
+            <div class="form-section">
+                <h3>Confirme su contraseña*</h3>
+                <div class="form-group">
+                    <input type="password" id="confirm_password" name="confirm_password" placeholder="Reescriba su contraseña" required>
+                </div>
+            </div>
+
+            <div class="checkbox-group">
+                <input type="checkbox" id="terminos" name="terminos" required>
+                <label for="terminos">Acepta los términos y servicio y Política de privacidad.</label>
+            </div>
+
+            <button type="submit" class="btn-create-account">Crear cuenta</button>
+        </form>
+        <p>¿Ya tienes tu cuenta? Inicia sesión</p>
+    </div>
+</body>
+
+</html>

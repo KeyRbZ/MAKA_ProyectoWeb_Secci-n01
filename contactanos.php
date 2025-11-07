@@ -4,9 +4,10 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>MAKA</title>
+    <title>MAKA - Contactanos</title>
     <link rel="icon" type="icono" href="archivos/1.png">
     <link rel="stylesheet" href="contactanos.css">
+    <link rel="icon" type="icono" href="archivos/BANNER MAKA.gif">
     <script src="https://kit.fontawesome.com/c80d489b0f.js" crossorigin="anonymous"></script>
 </head>
 
@@ -34,27 +35,53 @@
         </div>
     </nav>
 
-    <h2>¿Quieres saber más de MAKA?</h2>
-    <div class="contacto-info">
-        <div>
-            <p>Dirección: Address 1: Building Number: 19 </p>
-            <p>Street Name: McCowan Road</p>
-            <p>Street Address: Woodside Squar</p>
-            <p>State: Ontario</p>
-            <p>City: Scarborough</p>
-            <p>Postal Code: M1S 3K1</p>
-        </div>
-        <div class = "espaciador-uno">
-            <p>Correo: maka@gmail.com</p>
+    <main>
+        <h2>¿Quieres saber más de MAKA?👀</h2>
+
+        <div class="contacto-mejorado">
+            <div class="contacto-icono">
+                <i class="fas fa-envelope-open-text"></i>
+            </div>
+
+            <div class="contacto-info-mejorada">
+                <div class="info-item">
+                    <i class="fas fa-map-marker-alt"></i>
+                    <div class="info-content">
+                        <h3>Dirección</h3>
+                        <p>Building Number: 19</p>
+                        <p>McCowan Road, Woodside Square</p>
+                        <p>Scarborough, Ontario M1S 3K1</p>
+                    </div>
+                </div>
+
+                <div class="info-item">
+                    <i class="fas fa-envelope"></i>
+                    <div class="info-content">
+                        <h3>Correo Electrónico</h3>
+                        <p>MAKA@gmail.com</p>
+                    </div>
+                </div>
+
+                <div class="info-item">
+                    <i class="fas fa-phone"></i>
+                    <div class="info-content">
+                        <h3>Teléfono</h3>
+                        <p>+1 416 835</p>
+                    </div>
+                </div>
+
+                <div class="info-item">
+                    <i class="fas fa-clock"></i>
+                    <div class="info-content">
+                        <h3>Horarios de Consulta</h3>
+                        <p>9:00 am - 5:00 pm</p>
+                        <p>Lunes a Viernes</p>
+                    </div>
+                </div>
+            </div>
         </div>
 
-        <div>
-            <p>Número de telefono: + 1 416 835</p>
-            <p>Instagram: @somosmaka</p>
-            <p>Horarios de consulta: 9:00 a 5:00 p.m. de Lunes a Viernes</p>
-        </div>
-    </div>
-        <div class = "faq-container">
+        <div class="faq-container">
             <div class="acordeon">
                 <h3>Respondemos tus dudas</h3>
                 <div class="item">
@@ -81,7 +108,61 @@
                     </div>
                 </div>
             </div>
-            <script src="contactanos.js"></script>
+        </div>
+    </main>
+
+    <footer>
+        <div class="footer-container">
+            <div class="footer-section links-section">
+                <h3>Links</h3>
+                <ul class="footer-links">
+                    <li><a href="inicio.php">Inicio</a></li>
+                    <li><a href="maka.php">Calculadora digital</a></li>
+                    <li><a href="que_somos.php">¿Que somos?</a></li>
+                    <li><a href="contactanos.php">Contactanos</a></li>
+                    <li><a href="sugerencias.php">Sugerencias</a></li>
+                </ul>
+            </div>
+
+            <div class="footer-section logo-section">
+                <img src="archivos/1.png" alt="Logo MAKA" class="footer-logo">
+            </div>
+
+            <div class="footer-section info-section">
+                <h3>Información general</h3>
+                <ul class="contact-info">
+                    <li>
+                        <i class="fas fa-map-marker-alt"></i>
+                        <span>Building Number: 19, McCowan Road, Woodside Square</span>
+                    </li>
+                    <li>
+                        <i class="fas fa-phone"></i>
+                        <span>+1 416 835</span>
+                    </li>
+                    <li>
+                        <i class="fas fa-envelope"></i>
+                        <span>MAKA@gmail.com</span>
+                    </li>
+                    <li>
+                        <i class="fas fa-clock"></i>
+                        <span>9:00 am - 5:00 pm de Lunes a Viernes</span>
+                    </li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="footer-bottom">
+            <div class="copyright">
+                © 2025 MAKA. Derechos reservados.
+            </div>
+            <div class="legal-links">
+                <a href="#">Política de privacidad</a>
+                <a href="#">Términos y condiciones</a>
+            </div>
+        </div>
+    </footer>
+
+    <script src="contactanos.js"></script>
 </body>
 
 </html>

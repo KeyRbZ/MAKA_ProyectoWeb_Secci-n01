@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>MAKA</title>
+    <title>MAKA - Inicio</title>
     <link rel="icon" type="icono" href="archivos/BANNER MAKA.gif">
     <link rel="stylesheet" href="inicio.css">
     <script src="https://kit.fontawesome.com/c80d489b0f.js" crossorigin="anonymous"></script>

@@ -42,6 +42,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     <title>MAKA - Registro</title>
     <link rel="icon" type="icono" href="archivos/1.png">
     <link rel="stylesheet" href="registro.css">
+    <link rel="icon" type="icono" href="archivos/BANNER MAKA.gif">
     <script src="https://kit.fontawesome.com/c80d489b0f.js" crossorigin="anonymous"></script>
 </head>
 
@@ -68,31 +69,35 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             </div>
         </div>
     </nav>
-    
+
     <div class="form-container">
         <h2>Crear una cuenta</h2>
         <p>Agregar en los campos requeridos la información a registrar para obtener una cuenta en MAKA</p>
 
         <form class="register-form" method="POST" action="">
             <?php if (isset($success)): ?>
-                <div class="alert success"><?php echo $success; ?></div>
+            <div class="alert success">
+                <?php echo $success; ?>
+            </div>
             <?php endif; ?>
-            
+
             <?php if (isset($error)): ?>
-                <div class="alert error"><?php echo $error; ?></div>
+            <div class="alert error">
+                <?php echo $error; ?>
+            </div>
             <?php endif; ?>
 
             <div class="form-row">
                 <div class="form-group">
                     <label for="nombre">Nombre*</label>
-                    <input type="text" id="nombre" name="nombre" placeholder="Ingrese su nombre" 
-                           value="<?php echo isset($_POST['nombre']) ? $_POST['nombre'] : ''; ?>" required>
+                    <input type="text" id="nombre" name="nombre" placeholder="Ingrese su nombre"
+                        value="<?php echo isset($_POST['nombre']) ? $_POST['nombre'] : ''; ?>" required>
                 </div>
 
                 <div class="form-group">
                     <label for="apellido">Apellido*</label>
                     <input type="text" id="apellido" name="apellido" placeholder="Ingrese su apellido"
-                           value="<?php echo isset($_POST['apellido']) ? $_POST['apellido'] : ''; ?>" required>
+                        value="<?php echo isset($_POST['apellido']) ? $_POST['apellido'] : ''; ?>" required>
                 </div>
             </div>
 
@@ -100,7 +105,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                 <h3>Email*</h3>
                 <div class="form-group">
                     <input type="email" id="email" name="email" placeholder="Ingrese su correo electrónico"
-                           value="<?php echo isset($_POST['email']) ? $_POST['email'] : ''; ?>" required>
+                        value="<?php echo isset($_POST['email']) ? $_POST['email'] : ''; ?>" required>
                 </div>
             </div>
 
@@ -108,7 +113,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                 <h3>Numero telefónico*</h3>
                 <div class="form-group">
                     <input type="tel" id="telefono" name="telefono" placeholder="Ingrese su numero de teléfono"
-                           value="<?php echo isset($_POST['telefono']) ? $_POST['telefono'] : ''; ?>" required>
+                        value="<?php echo isset($_POST['telefono']) ? $_POST['telefono'] : ''; ?>" required>
                 </div>
             </div>
 
@@ -122,7 +127,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             <div class="form-section">
                 <h3>Confirme su contraseña*</h3>
                 <div class="form-group">
-                    <input type="password" id="confirm_password" name="confirm_password" placeholder="Reescriba su contraseña" required>
+                    <input type="password" id="confirm_password" name="confirm_password"
+                        placeholder="Reescriba su contraseña" required>
                 </div>
             </div>
 
@@ -133,8 +139,59 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
             <button type="submit" class="btn-create-account">Crear cuenta</button>
         </form>
-        <p>¿Ya tienes tu cuenta? Inicia sesión</p>
+        <p>¿Ya tienes tu cuenta? <a href="iniciar_sesion.php" class="login-link">Inicia sesión</a></p>
     </div>
+    <footer>
+        <div class="footer-container">
+            <div class="footer-section links-section">
+                <h3>Links</h3>
+                <ul class="footer-links">
+                    <li><a href="inicio.php">Inicio</a></li>
+                    <li><a href="maka.php">Calculadora digital</a></li>
+                    <li><a href="que_somos.php">¿Que somos?</a></li>
+                    <li><a href="contactanos.php">Contactanos</a></li>
+                    <li><a href="sugerencias.php">Sugerencias</a></li>
+                </ul>
+            </div>
+
+
+            <div class="footer-section logo-section">
+                <img src="archivos/1.png" alt="Logo MAKA" class="footer-logo">
+            </div>
+
+            <div class="footer-section info-section">
+                <h3>Información general</h3>
+                <ul class="contact-info">
+                    <li>
+                        <i class="fas fa-map-marker-alt"></i>
+                        <span>Building Number: 19, McCowan Road, Woodside Square</span>
+                    </li>
+                    <li>
+                        <i class="fas fa-phone"></i>
+                        <span>+1 416 835</span>
+                    </li>
+                    <li>
+                        <i class="fas fa-envelope"></i>
+                        <span>MAKA@gmail.com</span>
+                    </li>
+                    <li>
+                        <i class="fas fa-clock"></i>
+                        <span>9:00 am - 5:00 pm de Lunes a Viernes</span>
+                    </li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="footer-bottom">
+            <div class="copyright">
+                © 2025 MAKA. Derechos reservados.
+            </div>
+            <div class="legal-links">
+                <a href="#">Política de privacidad</a>
+                <a href="#">Términos y condiciones</a>
+            </div>
+        </div>
+    </footer>
 </body>
 
 </html>

@@ -187,7 +187,7 @@
                     </div>
                 </section>
 
-                <!-- Botones -->
+                
                 <div class="action-buttons">
                     <button id="clearBtn" class="btn-secondary">Borrar</button>
                     <button id="saveBtn" class="btn-primary">Guardar</button>

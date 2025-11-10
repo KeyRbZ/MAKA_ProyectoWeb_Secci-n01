@@ -11,6 +11,7 @@ try {
         throw new Exception("Error de conexión: " . $conexion->connect_error);
     }
     
+    echo "¡Conexión exitosa a MariaDB en puerto 3307!";
     
 } catch (Exception $e) {
     die("Error: " . $e->getMessage());

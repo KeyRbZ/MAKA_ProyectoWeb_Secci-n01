@@ -4,8 +4,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>MAKA</title>
-    <link rel="icon" type="icono" href="archivos/1.png">
+    <title>MAKA - Inicio</title>
+    <link rel="icon" type="icono" href="archivos/BANNER MAKA.gif">
     <link rel="stylesheet" href="inicio.css">
     <script src="https://kit.fontawesome.com/c80d489b0f.js" crossorigin="anonymous"></script>
 </head>
@@ -34,11 +34,9 @@
         </div>
     </nav>
 
-    <div class="video_presentación">
-        <video controls>
-            <source src="archivos/video.mp4" type="video/mp4">
-            Tu navegador no soporta el elemento de video.
-        </video>
+
+    <div class="gif-banner">
+        <img src="archivos/BANNER MAKA.gif" alt="Banner MAKA">
     </div>
 
     <div class="contenido_texto">

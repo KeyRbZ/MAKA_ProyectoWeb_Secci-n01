@@ -15,7 +15,7 @@
 }
 
 body {
-    font-family: Arial, sans-serif;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     line-height: 1.6;
     color: #333;
     background-color: #f8f9fa;
@@ -124,16 +124,21 @@ nav {
     background-color: #ddd;
 }
 
-.video_presentación {
+.gif-banner {
     width: 100%;
-    max-width: 1680px;
-    margin: 20px auto;
-    padding: 0 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 0;
+    background-color: transparent;
 }
 
-.video_presentación video {
+.gif-banner img {
     width: 100%;
-    border-radius: 10px;
+    height: auto;
+    max-height: 440px; 
+    object-fit: cover;
+    border-radius: 0; 
     display: block;
 }
 

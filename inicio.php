@@ -4,8 +4,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>MAKA</title>
-    <link rel="icon" type="icono" href="archivos/1.png">
+    <title>MAKA - Inicio</title>
+    <link rel="icon" type="icono" href="archivos/BANNER MAKA.gif">
     <link rel="stylesheet" href="inicio.css">
     <script src="https://kit.fontawesome.com/c80d489b0f.js" crossorigin="anonymous"></script>
 </head>
@@ -34,11 +34,9 @@
         </div>
     </nav>
 
-    <div class="video_presentación">
-        <video controls>
-            <source src="archivos/video.mp4" type="video/mp4">
-            Tu navegador no soporta el elemento de video.
-        </video>
+
+    <div class="gif-banner">
+        <img src="archivos/BANNER MAKA.gif" alt="Banner MAKA">
     </div>
 
     <div class="contenido_texto">
@@ -92,6 +90,57 @@
             </div>
         </section>
     </div>
+    <footer>
+        <div class="footer-container">
+            <div class="footer-section links-section">
+                <h3>Links</h3>
+                <ul class="footer-links">
+                    <li><a href="inicio.php">Inicio</a></li>
+                    <li><a href="maka.php">Calculadora digital</a></li>
+                    <li><a href="que_somos.php">¿Que somos?</a></li>
+                    <li><a href="contactanos.php">Contactanos</a></li>
+                    <li><a href="sugerencias.php">Sugerencias</a></li>
+                </ul>
+            </div>
+
+
+            <div class="footer-section logo-section">
+                <img src="archivos/1.png" alt="Logo MAKA" class="footer-logo">
+            </div>
+
+            <div class="footer-section info-section">
+                <h3>Información general</h3>
+                <ul class="contact-info">
+                    <li>
+                        <i class="fas fa-map-marker-alt"></i>
+                        <span>Building Number: 19, McCowan Road, Woodside Square</span>
+                    </li>
+                    <li>
+                        <i class="fas fa-phone"></i>
+                        <span>+1 416 835</span>
+                    </li>
+                    <li>
+                        <i class="fas fa-envelope"></i>
+                        <span>MAKA@gmail.com</span>
+                    </li>
+                    <li>
+                        <i class="fas fa-clock"></i>
+                        <span>9:00 am - 5:00 pm de Lunes a Viernes</span>
+                    </li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="footer-bottom">
+            <div class="copyright">
+                © 2025 MAKA. Derechos reservados.
+            </div>
+            <div class="legal-links">
+                <a href="#">Política de privacidad</a>
+                <a href="#">Términos y condiciones</a>
+            </div>
+        </div>
+    </footer>
 </body>
 
 </html>

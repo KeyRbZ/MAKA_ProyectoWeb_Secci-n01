@@ -1,31 +1,27 @@
 <!DOCTYPE html>
 <html lang="es">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>MAKA - Calculadora de Gastos</title>
     <link rel="stylesheet" href="maka.css">
-    <link rel="icon" type="icono" href="archivos/BANNER MAKA.gif">
-    <script src="https://kit.fontawesome.com/c80d489b0f.js" crossorigin="anonymous"></script>
 </head>
-
 <body>
     <nav>
         <div class="menu">
             <div class="logo">
                 <img src="archivos/1.png" alt="Logo MAKA">
             </div>
-            <a href="inicio.php">Inicio</a>
+            <a href="inicio.html">Inicio</a>
             <div class="desplegable">
                 <button>MAKA</button>
                 <div class="menu-content">
-                    <a href="maka.php">Calculadora de gastos</a>
+                    <a href="maka.html">Calculadora de gastos</a>
                 </div>
             </div>
-            <a href="que_somos.php">¿Qué somos?</a>
-            <a href="contactanos.php">Contáctanos</a>
-            <a href="sugerencias.php">Sugerencias</a>
+            <a href="que_somos.html">¿Qué somos?</a>
+            <a href="contactanos.html">Contáctanos</a>
+            <a href="sugerencias.html">Sugerencias</a>
             <div class="boton">
                 <button class="boton_iniciar_sesion">Iniciar sesión</button>
                 <button class="boton_registro">Registrate</button>
@@ -34,36 +30,33 @@
     </nav>
 
     <div class="container">
-        <h1>Calculadora semanal de gastos para estudiantes 😎 </h1>
-
+        <h1>Calculadora semanal de gastos para estudiantes</h1>
+        
         <div class="description">
-            <p>¿Sabe en qué destina su dinero como estudiante? ¿Tiene identificados sus gastos fijos y aquellos en los
-                que podría realizar ajustes con mayor facilidad? Esta calculadora está diseñada especialmente para
-                estudiantes que deseen llevar un control responsable de sus finanzas personales.</p>
-            <p class="note">- Esta información no será recopilada, sin embargo si gustas tener guardado el progreso de
-                tu presupuesto puedes <a href="iniciar_sesion.php" class="enlace-destacado">iniciar sesión</a> o <a
-                    href="registro.php" class="enlace-destacado">crear una cuenta</a>.</p>
+            <p>¿Sabe en qué destina su dinero como estudiante? ¿Tiene identificados sus gastos fijos y aquellos en los que podría realizar ajustes con mayor facilidad? Esta calculadora está diseñada especialmente para estudiantes que deseen llevar un control responsable de sus finanzas personales.</p>
+            <p class="note">- Esta información no será recopilada, sin embargo si gustas tener guardado el progreso de tu presupuesto puedes iniciar sesión o crear una cuenta.</p>
         </div>
 
         <div class="content-grid">
-
+            <!-- Columna Izquierda -->
             <div class="left-column">
-
+                <!-- Sección Ingresos -->
                 <section class="card">
                     <h2>Ingresos</h2>
                     <p class="section-description">Introduzca la cantidad de dinero con la que cuenta cada semana.</p>
-
+                    
                     <div class="input-section">
                         <h3>Ingreso semanal</h3>
                         <input type="number" id="ingresoSemanal" min="0" placeholder="0">
                     </div>
                 </section>
 
+                <!-- Sección Gastos -->
                 <section class="card">
                     <h2>Gastos</h2>
                     <p class="section-description">Introduzca sus gastos semanales.</p>
-
-
+                    
+                    <!-- Gastos Fijos Obligatorios -->
                     <div class="expense-category">
                         <h3 class="category-title">Fijos obligatorios</h3>
                         <div class="expense-inputs">
@@ -85,7 +78,8 @@
                             </div>
                         </div>
                     </div>
-
+                    
+                    <!-- Gastos Fijos Reducibles -->
                     <div class="expense-category">
                         <h3 class="category-title">Fijos reducibles</h3>
                         <div class="expense-inputs">
@@ -99,7 +93,8 @@
                             </div>
                         </div>
                     </div>
-
+                    
+                    <!-- Gastos Variables -->
                     <div class="expense-category">
                         <h3 class="category-title">Variables</h3>
                         <div class="expense-inputs">
@@ -116,7 +111,9 @@
                 </section>
             </div>
 
+            <!-- Columna Derecha -->
             <div class="right-column">
+                <!-- Aportaciones al ahorro -->
                 <section class="card">
                     <h2>Aportaciones al ahorro</h2>
                     <div class="input-section">
@@ -124,6 +121,7 @@
                     </div>
                 </section>
 
+                <!-- Presupuesto -->
                 <section class="card">
                     <h2>Presupuesto</h2>
                     <table class="budget-table">
@@ -142,16 +140,17 @@
                             </tr>
                         </tbody>
                     </table>
-
+                    
                     <div class="additional-savings">
                         <h3>Capacidad de ahorro adicional</h3>
                         <p id="capacidadAhorro">0</p>
                     </div>
                 </section>
 
+                <!-- Distribución -->
                 <section class="card">
                     <h2>Distribución del gasto</h2>
-
+                    
                     <div class="distribution">
                         <div class="distribution-item">
                             <span class="distribution-label">Fijos obligatorios</span>
@@ -169,7 +168,7 @@
                             <span class="distribution-percentage" id="variablesPorcentaje">0%</span>
                         </div>
                     </div>
-
+                    
                     <div class="savings-distribution">
                         <h3>Ahorro</h3>
                         <div class="distribution">
@@ -187,7 +186,7 @@
                     </div>
                 </section>
 
-                
+                <!-- Botones -->
                 <div class="action-buttons">
                     <button id="clearBtn" class="btn-secondary">Borrar</button>
                     <button id="saveBtn" class="btn-primary">Guardar</button>
@@ -195,19 +194,19 @@
             </div>
         </div>
     </div>
+
     <footer>
         <div class="footer-container">
             <div class="footer-section links-section">
                 <h3>Links</h3>
                 <ul class="footer-links">
-                    <li><a href="inicio.php">Inicio</a></li>
-                    <li><a href="maka.php">Calculadora digital</a></li>
-                    <li><a href="que_somos.php">¿Que somos?</a></li>
-                    <li><a href="contactanos.php">Contactanos</a></li>
-                    <li><a href="sugerencias.php">Sugerencias</a></li>
+                    <li><a href="inicio.html">Inicio</a></li>
+                    <li><a href="maka.html">Calculadora digital</a></li>
+                    <li><a href="que_somos.html">¿Que somos?</a></li>
+                    <li><a href="contactanos.html">Contactanos</a></li>
+                    <li><a href="sugerencias.html">Sugerencias</a></li>
                 </ul>
             </div>
-
 
             <div class="footer-section logo-section">
                 <img src="archivos/1.png" alt="Logo MAKA" class="footer-logo">
@@ -247,7 +246,6 @@
         </div>
     </footer>
 
-    <script src="maka.js"></script>
+    <script src="script.js"></script>
 </body>
-
 </html>

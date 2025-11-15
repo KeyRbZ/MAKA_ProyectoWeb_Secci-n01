@@ -16,7 +16,7 @@
             <div class="logo">
                 <img src="archivos/1.png" alt="Logo MAKA">
             </div>
-            <a href="inicio.html">Inicio</a>
+            <a href="inicio.php">Inicio</a>
             <div class="desplegable">
                 <button>MAKA</button>
                 <div class="menu-content">

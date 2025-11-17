@@ -8,6 +8,11 @@
     --transition: all 0.3s ease;
 }
 
+nav .desplegable .menu-content a {
+    color: white;
+    text-decoration: none;
+}
+
 body {
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     color: #333;

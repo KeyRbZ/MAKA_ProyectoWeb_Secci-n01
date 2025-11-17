@@ -102,7 +102,10 @@ nav {
 .menu a {
     display: inline-block;
 }
-
+nav .desplegable .menu-content a {
+    color: white;
+    text-decoration: none;
+}
 .menu button:hover,
 .menu a:hover {
     background-color: var(--secondary);

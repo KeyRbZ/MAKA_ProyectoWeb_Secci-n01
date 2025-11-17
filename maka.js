@@ -1,11 +1,25 @@
 document.addEventListener('DOMContentLoaded', function() {
+    console.log('✅ Calculadora MAKA cargada');
 
+function togglePresupuestos() {
+    const lista = document.getElementById('presupuestosLista');
+    const boton = document.querySelector('.toggle-presupuestos');
+    
+    if (lista.style.display === 'none') {
+        lista.style.display = 'block';
+        boton.textContent = '📊 Ocultar Presupuestos';
+    } else {
+        lista.style.display = 'none';
+        boton.textContent = '📊 Mostrar Presupuestos (<?php echo count($presupuestos); ?>)';
+    }
+}
     const ingresoSemanal = document.getElementById('ingresoSemanal');
     const aportacionAhorro = document.getElementById('aportacionAhorro');
     const totalIngresos = document.getElementById('totalIngresos');
     const totalGastos = document.getElementById('totalGastos');
     const totalAhorro = document.getElementById('totalAhorro');
     const capacidadAhorro = document.getElementById('capacidadAhorro');
+
 
     const fijosObligatoriosTotal = document.getElementById('fijosObligatoriosTotal');
     const fijosObligatoriosPorcentaje = document.getElementById('fijosObligatoriosPorcentaje');
@@ -20,73 +34,67 @@ document.addEventListener('DOMContentLoaded', function() {
     
     const clearBtn = document.getElementById('clearBtn');
     const saveBtn = document.getElementById('saveBtn');
-    
-    initEvents();
-    
-    function initEvents() {
-        ingresoSemanal.addEventListener('input', function() {
-            if (this.value < 0) this.value = 0;
-            calcularTotales();
-        });
-        
-        aportacionAhorro.addEventListener('input', function() {
-            if (this.value < 0) this.value = 0;
-            calcularTotales();
-        });
-        
-        const amountInputs = document.querySelectorAll('.expense-amount');
-        amountInputs.forEach(input => {
-            input.addEventListener('input', function() {
-                if (this.value < 0) this.value = 0;
-                calcularTotales();
-            });
-        });
 
-        clearBtn.addEventListener('click', limpiarFormulario);
-        saveBtn.addEventListener('click', guardarDatos);
-        
-        calcularTotales();
-    }
-    
     function calcularTotales() {
-        const ingresos = Math.max(0, parseFloat(ingresoSemanal.value) || 0);
-        totalIngresos.textContent = formatCurrency(ingresos);
-        
-        let gastosFijosObligatorios = Math.max(0, calcularGastosCategoria('.expense-category:nth-of-type(1)'));
-        let gastosFijosReducibles = Math.max(0, calcularGastosCategoria('.expense-category:nth-of-type(2)'));
-        let gastosVariables = Math.max(0, calcularGastosCategoria('.expense-category:nth-of-type(3)'));
-        
-        const totalGastosValor = Math.max(0, gastosFijosObligatorios + gastosFijosReducibles + gastosVariables);
-        totalGastos.textContent = formatCurrency(totalGastosValor);
-        
-        const ahorro = Math.max(0, parseFloat(aportacionAhorro.value) || 0);
-        totalAhorro.textContent = formatCurrency(ahorro);
-        
 
-        const capacidadAhorroValor = Math.max(0, ingresos - totalGastosValor - ahorro);
-        capacidadAhorro.textContent = formatCurrency(capacidadAhorroValor);
-        
-        actualizarDistribucion(
-            gastosFijosObligatorios, 
-            gastosFijosReducibles, 
-            gastosVariables, 
-            ahorro, 
-            capacidadAhorroValor,
-            ingresos
-        );
-    }
+    const ingresos = parseFloat(ingresoSemanal.value) || 0;
+    totalIngresos.textContent = formatCurrency(ingresos);
     
-    function calcularGastosCategoria(selector) {
-        const inputs = document.querySelectorAll(`${selector} .expense-amount`);
-        let total = 0;
-        inputs.forEach(input => {
-            const valor = parseFloat(input.value) || 0;
-            total += Math.max(0, valor);
-        });
-        return total;
-    }
+
+    let gastosFijosObligatorios = 0;
+    let gastosFijosReducibles = 0;
+    let gastosVariables = 0;
+    
+
+    const allInputs = document.querySelectorAll('.expense-amount');
+    
+
+    gastosFijosObligatorios += parseFloat(allInputs[0]?.value) || 0;
+    gastosFijosObligatorios += parseFloat(allInputs[1]?.value) || 0;
+    gastosFijosObligatorios += parseFloat(allInputs[2]?.value) || 0;
+    gastosFijosObligatorios += parseFloat(allInputs[3]?.value) || 0;
+    
+
+    gastosFijosReducibles += parseFloat(allInputs[4]?.value) || 0;
+    gastosFijosReducibles += parseFloat(allInputs[5]?.value) || 0;
+    
+
+    gastosVariables += parseFloat(allInputs[6]?.value) || 0;
+    gastosVariables += parseFloat(allInputs[7]?.value) || 0;
+    
+
+    const totalGastosValor = gastosFijosObligatorios + gastosFijosReducibles + gastosVariables;
+    totalGastos.textContent = formatCurrency(totalGastosValor);
+    
+
+    const ahorro = parseFloat(aportacionAhorro.value) || 0;
+    totalAhorro.textContent = formatCurrency(ahorro);
+    
+
+    const capacidadAhorroValor = Math.max(0, ingresos - totalGastosValor - ahorro);
+    capacidadAhorro.textContent = formatCurrency(capacidadAhorroValor);
+    
+
+    actualizarDistribucion(
+        gastosFijosObligatorios, 
+        gastosFijosReducibles, 
+        gastosVariables, 
+        ahorro, 
+        capacidadAhorroValor,
+        ingresos
+    );
+    
+    console.log('🔢 RESULTADOS:', {
+        'Fijos Obligatorios': gastosFijosObligatorios,
+        'Fijos Reducibles': gastosFijosReducibles,
+        'Variables': gastosVariables,
+        'Total Gastos': totalGastosValor
+    });
+}
+
     
     function actualizarDistribucion(fijosObligatorios, fijosReducibles, variables, ahorro, ahorroAdicional, ingresos) {
+
         fijosObligatoriosTotal.textContent = formatCurrency(fijosObligatorios);
         fijosReduciblesTotal.textContent = formatCurrency(fijosReducibles);
         variablesTotal.textContent = formatCurrency(variables);
@@ -95,23 +103,18 @@ document.addEventListener('DOMContentLoaded', function() {
         
 
         if (ingresos > 0) {
-            fijosObligatoriosPorcentaje.textContent = calcularPorcentaje(fijosObligatorios, ingresos);
-            fijosReduciblesPorcentaje.textContent = calcularPorcentaje(fijosReducibles, ingresos);
-            variablesPorcentaje.textContent = calcularPorcentaje(variables, ingresos);
-            ahorroPorcentaje.textContent = calcularPorcentaje(ahorro, ingresos);
-            ahorroAdicionalPorcentaje.textContent = calcularPorcentaje(ahorroAdicional, ingresos);
+            fijosObligatoriosPorcentaje.textContent = ((fijosObligatorios / ingresos) * 100).toFixed(1) + '%';
+            fijosReduciblesPorcentaje.textContent = ((fijosReducibles / ingresos) * 100).toFixed(1) + '%';
+            variablesPorcentaje.textContent = ((variables / ingresos) * 100).toFixed(1) + '%';
+            ahorroPorcentaje.textContent = ((ahorro / ingresos) * 100).toFixed(1) + '%';
+            ahorroAdicionalPorcentaje.textContent = ((ahorroAdicional / ingresos) * 100).toFixed(1) + '%';
         } else {
-            // Si no hay ingresos, todos los porcentajes son 0%
             fijosObligatoriosPorcentaje.textContent = '0%';
             fijosReduciblesPorcentaje.textContent = '0%';
             variablesPorcentaje.textContent = '0%';
             ahorroPorcentaje.textContent = '0%';
             ahorroAdicionalPorcentaje.textContent = '0%';
         }
-    }
-    
-    function calcularPorcentaje(valor, total) {
-        return ((valor / total) * 100).toFixed(1) + '%';
     }
     
     function formatCurrency(value) {
@@ -124,7 +127,7 @@ document.addEventListener('DOMContentLoaded', function() {
     }
     
     function limpiarFormulario() {
-        // Limpiar inputs principales
+        
         ingresoSemanal.value = '';
         aportacionAhorro.value = '';
         
@@ -135,7 +138,6 @@ document.addEventListener('DOMContentLoaded', function() {
         });
         
         calcularTotales();
-        
         alert('Formulario limpiado correctamente');
     }
     
@@ -155,7 +157,6 @@ document.addEventListener('DOMContentLoaded', function() {
         };
         
         localStorage.setItem('calculadoraGastos', JSON.stringify(datos));
-        
         alert('Datos guardados correctamente');
     }
     
@@ -176,10 +177,66 @@ document.addEventListener('DOMContentLoaded', function() {
                 calcularTotales();
             } catch (error) {
                 console.error('Error al cargar datos guardados:', error);
-                localStorage.removeItem('calculadoraGastos');
             }
         }
     }
+
+
+    ingresoSemanal.addEventListener('input', calcularTotales);
+    aportacionAhorro.addEventListener('input', calcularTotales);
     
+    document.querySelectorAll('.expense-amount').forEach(input => {
+        input.addEventListener('input', calcularTotales);
+    });
+
+    clearBtn.addEventListener('click', limpiarFormulario);
+    saveBtn.addEventListener('click', guardarDatos);
+    
+
     cargarDatosGuardados();
+    calcularTotales();
 });
+
+
+document.getElementById('saveBtn').addEventListener('click', function() {
+    const ingreso = parseFloat(document.getElementById('ingresoSemanal').value) || 0;
+    
+
+    const fijosObligatorios = Array.from(document.querySelectorAll('.expense-category:first-child .expense-amount'))
+        .reduce((sum, input) => sum + (parseFloat(input.value) || 0), 0);
+    
+
+    const fijosReducibles = Array.from(document.querySelectorAll('.expense-category:nth-child(2) .expense-amount'))
+        .reduce((sum, input) => sum + (parseFloat(input.value) || 0), 0);
+    
+
+    const variables = Array.from(document.querySelectorAll('.expense-category:nth-child(3) .expense-amount'))
+        .reduce((sum, input) => sum + (parseFloat(input.value) || 0), 0);
+    
+    const ahorro = parseFloat(document.getElementById('aportacionAhorro').value) || 0;
+    const capacidadAhorro = parseFloat(document.getElementById('capacidadAhorro').textContent) || 0;
+    
+
+    document.getElementById('inputIngresoSemanal').value = ingreso;
+    document.getElementById('inputFijosObligatorios').value = fijosObligatorios;
+    document.getElementById('inputFijosReducibles').value = fijosReducibles;
+    document.getElementById('inputVariables').value = variables;
+    document.getElementById('inputAportacionAhorro').value = ahorro;
+    document.getElementById('inputCapacidadAhorro').value = capacidadAhorro;
+    
+
+    document.getElementById('presupuestoForm').submit();
+});
+
+function togglePresupuestos() {
+    const lista = document.getElementById('presupuestosLista');
+    const boton = document.querySelector('.toggle-presupuestos');
+    
+    if (lista.style.display === 'none') {
+        lista.style.display = 'block';
+        boton.textContent = '📊 Ocultar Presupuestos';
+    } else {
+        lista.style.display = 'none';
+        boton.textContent = '📊 Mostrar Presupuestos (<?php echo count($presupuestos); ?>)';
+    }
+}

@@ -91,6 +91,10 @@ nav {
     color: #333;
     text-decoration: none;
 }
+nav .desplegable .menu-content a {
+    color: white;
+    text-decoration: none;
+}
 
 .menu-content a:hover {
     background-color: #ddd;

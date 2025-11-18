@@ -8,7 +8,10 @@
     --shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
     --transition: all 0.3s ease;
 }
-
+nav .desplegable .menu-content a {
+    color: white;
+    text-decoration: none;
+}
 * {
     margin: 0;
     padding: 0;

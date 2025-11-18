@@ -1,3 +1,8 @@
+<?php
+session_start();
+$usuario_id = isset($_SESSION['usuario_id']) ? $_SESSION['usuario_id'] : null;
+?>
+
 <!DOCTYPE html>
 <html lang="es">
 <head>
@@ -26,8 +31,14 @@
             <a href="contactanos.php">Contáctanos</a>
             <a href="sugerencias.php">Sugerencias</a>
             <div class="boton">
-                <button class="boton_iniciar_sesion" onclick="window.location.href='iniciar_sesion.php'">Iniciar sesión</button>
+                <?php if ($usuario_id): ?>
+                <span style="color: white; margin-right: 15px;">Bienvenido</span>
+                <button class="boton_cerrar_sesion" onclick="window.location.href='logout.php'">Cerrar Sesión</button>
+                <?php else: ?>
+                <button class="boton_iniciar_sesion" onclick="window.location.href='iniciar_sesion.php'">Iniciar
+                    sesión</button>
                 <button class="boton_registro" onclick="window.location.href='registro.php'">Registrate</button>
+                <?php endif; ?>
             </div>
         </div>
     </nav>

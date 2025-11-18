@@ -1,5 +1,6 @@
 <?php
 session_start();
+$usuario_id = isset($_SESSION['usuario_id']) ? $_SESSION['usuario_id'] : null;
 
 if (empty($_SESSION['csrf'])) {
   $_SESSION['csrf'] = bin2hex(random_bytes(32));
@@ -7,9 +8,12 @@ if (empty($_SESSION['csrf'])) {
 
 $success = $error = null;
 
+
+require_once 'conexion.php';
+
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
-  if (!isset($_POST['csrf']) || !hash_equals($_SESSION['csrf'], $_SESSION['csrf'])) {
+  if (!isset($_POST['csrf']) || !hash_equals($_SESSION['csrf'], $_POST['csrf'])) {
     $error = 'Sesión inválida. Recarga e inténtalo de nuevo.';
   } else {
 
@@ -27,8 +31,28 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     if ($errs) {
       $error = implode(' ', $errs);
     } else {
-      $success = '¡Gracias! Recibimos tu sugerencia y la estamos canalizando.';
-      $_POST = [];
+      
+      if (isset($conexion) && $conexion instanceof mysqli) {
+          try {
+            $stmt = $conexion->prepare("INSERT INTO sugerencias (nombre, apellido, email, problema) VALUES (?, ?, ?, ?)");
+            if ($stmt) {
+                $stmt->bind_param("ssss", $nombre, $apellido, $email, $detalle);
+                if ($stmt->execute()) {
+                    $success = '¡Gracias! Recibimos tu sugerencia y la estamos canalizando.';
+                    $_POST = [];
+                } else {
+                    $error = "Error al ejecutar la consulta.";
+                }
+                $stmt->close();
+            } else {
+                $error = "Error al preparar la consulta.";
+            }
+          } catch (Exception $e) {
+            $error = "Error al guardar la sugerencia.";
+          }
+      } else {
+          $error = "Error de conexión a la base de datos.";
+      }
     }
   }
 }
@@ -63,12 +87,18 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
       <a href="contactanos.php">Contáctanos</a>
       <a href="sugerencias.php">Sugerencias</a>
       <div class="boton">
-        <button class="boton_iniciar_sesion" onclick="window.location.href='iniciar_sesion.php'">Iniciar
-          sesión</button>
-        <button class="boton_registro" onclick="window.location.href='registro.php'">Registrate</button>
+                <?php if ($usuario_id): ?>
+                <span style="color: white; margin-right: 15px;">Bienvenido</span>
+                <button class="boton_cerrar_sesion" onclick="window.location.href='logout.php'">Cerrar Sesión</button>
+                <?php else: ?>
+                <button class="boton_iniciar_sesion" onclick="window.location.href='iniciar_sesion.php'">Iniciar
+                    sesión</button>
+                <button class="boton_registro" onclick="window.location.href='registro.php'">Registrate</button>
+                <?php endif; ?>
       </div>
     </div>
   </nav>
+  
   <form class="sugerencias-form" method="POST" action="">
     <input type="hidden" name="csrf" value="<?php echo htmlspecialchars($_SESSION['csrf']); ?>">
 
@@ -117,6 +147,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
     <button type="submit" class="btn-primario">Enviar</button>
   </form>
+  
   <footer>
     <div class="footer-container">
       <div class="footer-section links-section">
@@ -129,7 +160,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
           <li><a href="sugerencias.php">Sugerencias</a></li>
         </ul>
       </div>
-
 
       <div class="footer-section logo-section">
         <img src="archivos/1.png" alt="Logo MAKA" class="footer-logo">
@@ -169,5 +199,4 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     </div>
   </footer>
 </body>
-
 </html>

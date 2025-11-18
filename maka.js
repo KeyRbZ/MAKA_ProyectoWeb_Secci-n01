@@ -22,6 +22,11 @@ document.addEventListener('DOMContentLoaded', function() {
     // Botones
     const clearBtn = document.getElementById('clearBtn');
     const saveBtn = document.getElementById('saveBtn');
+
+    function calcularTotales() {
+
+    const ingresos = parseFloat(ingresoSemanal.value) || 0;
+    totalIngresos.textContent = formatCurrency(ingresos);
     
     // Categorías de gastos
     const expenseCategories = document.querySelectorAll('.expense-category');
@@ -148,7 +153,7 @@ document.addEventListener('DOMContentLoaded', function() {
     }
     
     function limpiarFormulario() {
-        // Limpiar inputs principales
+        
         ingresoSemanal.value = '';
         aportacionAhorro.value = '';
         
@@ -165,7 +170,6 @@ document.addEventListener('DOMContentLoaded', function() {
         
         // Recalcular para actualizar la interfaz
         calcularTotales();
-        
         alert('Formulario limpiado correctamente');
     }
     
@@ -188,7 +192,6 @@ document.addEventListener('DOMContentLoaded', function() {
         
         // Guardar en localStorage para persistencia en el navegador
         localStorage.setItem('calculadoraGastos', JSON.stringify(datos));
-        
         alert('Datos guardados correctamente');
     }
     
@@ -212,7 +215,63 @@ document.addEventListener('DOMContentLoaded', function() {
             calcularTotales();
         }
     }
+
+
+    ingresoSemanal.addEventListener('input', calcularTotales);
+    aportacionAhorro.addEventListener('input', calcularTotales);
+    
+    document.querySelectorAll('.expense-amount').forEach(input => {
+        input.addEventListener('input', calcularTotales);
+    });
+
+    clearBtn.addEventListener('click', limpiarFormulario);
+    saveBtn.addEventListener('click', guardarDatos);
     
     // Inicializar cargando datos guardados
     cargarDatosGuardados();
+    calcularTotales();
 });
+
+
+document.getElementById('saveBtn').addEventListener('click', function() {
+    const ingreso = parseFloat(document.getElementById('ingresoSemanal').value) || 0;
+    
+
+    const fijosObligatorios = Array.from(document.querySelectorAll('.expense-category:first-child .expense-amount'))
+        .reduce((sum, input) => sum + (parseFloat(input.value) || 0), 0);
+    
+
+    const fijosReducibles = Array.from(document.querySelectorAll('.expense-category:nth-child(2) .expense-amount'))
+        .reduce((sum, input) => sum + (parseFloat(input.value) || 0), 0);
+    
+
+    const variables = Array.from(document.querySelectorAll('.expense-category:nth-child(3) .expense-amount'))
+        .reduce((sum, input) => sum + (parseFloat(input.value) || 0), 0);
+    
+    const ahorro = parseFloat(document.getElementById('aportacionAhorro').value) || 0;
+    const capacidadAhorro = parseFloat(document.getElementById('capacidadAhorro').textContent) || 0;
+    
+
+    document.getElementById('inputIngresoSemanal').value = ingreso;
+    document.getElementById('inputFijosObligatorios').value = fijosObligatorios;
+    document.getElementById('inputFijosReducibles').value = fijosReducibles;
+    document.getElementById('inputVariables').value = variables;
+    document.getElementById('inputAportacionAhorro').value = ahorro;
+    document.getElementById('inputCapacidadAhorro').value = capacidadAhorro;
+    
+
+    document.getElementById('presupuestoForm').submit();
+});
+
+function togglePresupuestos() {
+    const lista = document.getElementById('presupuestosLista');
+    const boton = document.querySelector('.toggle-presupuestos');
+    
+    if (lista.style.display === 'none') {
+        lista.style.display = 'block';
+        boton.textContent = '📊 Ocultar Presupuestos';
+    } else {
+        lista.style.display = 'none';
+        boton.textContent = '📊 Mostrar Presupuestos (<?php echo count($presupuestos); ?>)';
+    }
+}

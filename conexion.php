@@ -11,7 +11,8 @@ try {
         throw new Exception("Error de conexión: " . $conexion->connect_error);
     }
     
-
+    echo "¡Conexión exitosa";
+    
 } catch (Exception $e) {
     
     die("Error de conexión a la base de datos");

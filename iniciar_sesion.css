@@ -8,13 +8,13 @@
     --transition: all 0.3s ease;
 }
 
-nav .desplegable .menu-content a {
-    color: white;
-    text-decoration: none;
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Times New Roman', Times, serif;
 }
-
 body {
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     color: #333;
     margin: 0;
     background-color: #fafafa;

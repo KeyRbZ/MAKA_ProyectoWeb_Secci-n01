@@ -7,10 +7,7 @@ $mensaje = '';
 $presupuestos = [];
 
 
-if ($usuario_id) {
-    echo "Conexión exitosa<br>";
-    echo "Usuario ID: $usuario_id<br>";
-}
+
 
 
 $conn = $conexion;
